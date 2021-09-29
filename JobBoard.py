@@ -1,10 +1,30 @@
 import Error
 import pandas as pd
 
-
 class JobBoard: 
     def __init__(self):
-        print("Job Board...")
+        print("Loading Job Board...")
+
+    # helper functions for parameters
+    def setTitle():
+        title = input("Job title: ")
+        return title
+
+    def setDesc():
+        desc = input("Job description: ")
+        return desc
+
+    def setEmployer():
+        employer = input("Employer: ")
+        return employer
+
+    def setLocation():
+        location = input("Job location: ")
+        return location
+
+    def setSalary():
+        salary = input("Salary: ")
+        return salary
 
     # function to create a job listing
     # returns: True if listing creation successful, False if unsuccessful
@@ -48,7 +68,8 @@ class JobBoard:
             return True
 
     # main function
-    def jobSelect(self, loggedIn, title, description, employer, location, salary):
+    # input: loggedIn = string containing logged-in user's name, or False if empty (nobody logged in)
+    def jobSelect(self, loggedIn):
         while True:
             print("             Job Board             ")
             print("Please select one of the following options")
@@ -65,7 +86,7 @@ class JobBoard:
                     Error.underConstruction()
                 # Create a job listing option
                 elif newOption == 2 and loggedIn:
-                    createJobListing(loggedIn, title, description, employer, location, salary)
+                    self.createJobListing(loggedIn, self.setTitle(), self.setDesc(), self.setEmployer(), self.setLocation(), self.setSalary())
                 # Deny job creation if not logged in
                 elif newOption == 2 and not loggedIn:
                     print("You must be logged in to post a job listing!\n")

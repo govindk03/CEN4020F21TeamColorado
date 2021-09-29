@@ -5,6 +5,8 @@ from CreateAccount import CreateAccount
 from Login import Login
 from JobBoard import JobBoard
 from SkillsPage import Skills
+from UsersPage import Users
+import ImportantLinks
 import re
 # boolean to determine if logged in
 loggedIn = False
@@ -22,7 +24,11 @@ while True:
             3. Search for a job
             4. Find someone you know
             5. Learn a new skill
-            6. Exit
+
+            6. Useful Links
+            7. InCollege Important Links
+
+            8. Exit
 
             Student success story:
             My name is John Shephard and I graduated from college with a BCS degree. I stumbled
@@ -30,7 +36,7 @@ while True:
             was instantly connected with hundreds of employers who all met or exceeded my desired
             criteria. I now have been working with a company for 4 years and have already
             recieved multiple promotions! Thanks InCollege!\n
-            7. Watch a video to see more of my story
+            9. Watch a video to see more of my story
         """)
     else:
         print("\n              Home Page               ")
@@ -41,16 +47,28 @@ while True:
             3. Search for a job
             4. Find someone you know
             5. Learn a new skill
-            6. Exit
+
+            6. Useful Links
+            7. InCollege Important Links
+
+            8. Exit
         """)
     try:
         newOption = int(input("Choice: "))
         print()
-        # Log-In option
+
+
+        #######################################
+        ###     OPTION 1: Log-In option     ###
+        #######################################
         if newOption == 1:
             # Call the Log-In page function
             loggedIn = Login().getLoginInput(loggedIn)
-        # Create an account option
+
+
+        ###################################################
+        ###     OPTION 2: Create an account option      ###
+        ###################################################
         elif newOption == 2:
             # helper functions to get user input for parameters
             # username 
@@ -100,44 +118,71 @@ while True:
             # call addAccount function to write into users.csv
             x.addAcc(username, firstName, lastName, password)
 
-        # Search for a job option
+
+        #################################################
+        ###     OPTION 3: Search for a job option     ###
+        #################################################
         elif newOption == 3:
-            # helper functions for parameters
-            def setTitle():
-                title = input("Job title: ")
-                return title
-
-            def setDesc():
-                desc = input("Job description: ")
-                return desc
-
-            def setEmployer():
-                employer = input("Employer: ")
-                return employer
-
-            def setLocation():
-                location = input("Job location: ")
-                return location
-
-            def setSalary():
-                salary = input("Salary: ")
-                return salary
             # Call the JobBoard.py jobSelect function
             x = JobBoard()
-            x.jobSelect(loggedIn, setTitle(), setDesc(), setEmployer(), setLocation(), setSalary())
-        # Find someone you know option
+            x.jobSelect(loggedIn)
+
+
+        #######################################################
+        ###     OPTION 4: Find someone you know option      ###
+        #######################################################
         elif newOption == 4:
-            x = Error()
-            x.underConstruction()
-        # Learn a new skill option
+            def getFirstName():
+                firstName = input("Please enter the FIRST NAME of the user you would like to search for: ")
+                return firstName
+
+            def getLastName():
+                lastName = input("Please enter the LAST NAME of the user you would like to search for: ")
+                return lastName
+
+            print("     Search-A-User Page      \n")
+            x = Users()
+            x.userSearch(getFirstName(), getLastName())
+
+
+        ###################################################
+        ###     OPTION 5: Learn a new skill option      ###
+        ###################################################
         elif newOption == 5:
             # Call the SkillsPage.py skillSelect function
             x = Skills()
             x.skillSelect()
+
+
+        #############################################
+        ###     OPTION 6: Useful Links option     ###
+        #############################################
         elif newOption == 6:
+            x = Error()
+            x.underConstruction()
+
+
+        ##########################################################
+        ###     OPTION 7: InCollege Important Links option     ###
+        ##########################################################
+        elif newOption == 7:
+            ImportantLinks.importantLinks()
+
+
+        ##############################################
+        ###     OPTION 8: Exit program option      ###
+        ##############################################
+        elif newOption == 8:
             # exit program
             exit()
-        elif newOption == 7 and loggedIn:
+
+        #############################################
+        ###     OPTION 9: Play video option       ###
+        #############################################
+        elif newOption == 9 and loggedIn:
             print("Video is now playing.")
+
+
+    # input error handler
     except ValueError:
         print("You provided a non-integer character.")

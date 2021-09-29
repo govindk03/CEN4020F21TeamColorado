@@ -2,7 +2,11 @@ import pandas as pd
 
 class Login:
     def __init__(self):
-        print("Login...")
+        print("Loading Login page...")
+    
+    # main LogIn function
+    # input: loggedIn = string containing logged-in user's name, or False if empty (nobody logged in)
+    # returns: string fullName = full name of user who logged in, False if login unsuccessful
     def getLoginInput(self, loggedIn):
         # log user out if they are already logged in
         if loggedIn:

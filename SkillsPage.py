@@ -1,7 +1,8 @@
 import Error
+
 class Skills:
     def __init__(self):
-        print("Loading Skills...")
+        print("Loading Skills page...")
     def skillSelect(self):
         while True:
             print("              Skills               ")
@@ -15,23 +16,24 @@ class Skills:
                 6. Back to home page
                 """)
             try:
+                e = Error()
                 newOption = int(input("Choice: "))
                 print('\n')
                 # Skill 1 option
                 if newOption == 1:
-                    Error.underConstruction()
+                    e.underConstruction()
                 # Skill 2 option
                 elif newOption == 2:
-                    Error.underConstruction()
+                    e.underConstruction()
                 # Skill 3 option
                 elif newOption == 3:
-                    Error.underConstruction()
+                    e.underConstruction()
                 # Skill 4 option
                 elif newOption == 4:
-                    Error.underConstruction()
+                    e.underConstruction()
                 # Skill 5 option
                 elif newOption == 5:
-                    Error.underConstruction()
+                    e.underConstruction()
                 # Return home option
                 elif newOption == 6:
                     print("Returning to home page...")
